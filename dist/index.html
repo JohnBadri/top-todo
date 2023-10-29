@@ -4,9 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Webpack App</title>
-  <script defer src="bundle.cf31e5a35fb578573222.js"></script></head>
+  <script defer src="bundle.953e6527132b2828461c.js"></script></head>
   <body>
+    <div class="header">
+      <img class="logo-img" alt="tick" src="./images/logo.png" />
+      <h2>ToDo List</h2>
+    </div>
+    <nav class="sidebar-nav">
+      <form class="project">
+        <input
+          type="text"
+          class="input project-name"
+          placeholder="My Project Name"
+        />
+        <input type="submit" class="input project-create" value="✚" />
+      </form>
+      <hr class="splitter" />
+      <div class="project-list"></div>
+    </nav>
     <div class="content"></div>
-    <img src="./images/icon.png" />
   </body>
 </html>

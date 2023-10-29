@@ -2,10 +2,29 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/js/function.js":
-/*!****************************!*\
-  !*** ./src/js/function.js ***!
-  \****************************/
+/***/ "./src/js/preventSubmit.js":
+/*!*********************************!*\
+  !*** ./src/js/preventSubmit.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   preventSubmit: () => (/* binding */ preventSubmit)
+/* harmony export */ });
+var preventSubmit = function preventSubmit() {
+  var form = document.querySelector("form");
+  form.addEventListener("submit", function (submit) {
+    submit.preventDefault();
+  });
+};
+
+/***/ }),
+
+/***/ "./src/js/project.js":
+/*!***************************!*\
+  !*** ./src/js/project.js ***!
+  \***************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -15,6 +34,161 @@ __webpack_require__.r(__webpack_exports__);
 var sayHi = function sayHi() {
   return "Hi there.";
 };
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/styles/meyer.css":
+/*!********************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/styles/meyer.css ***!
+  \********************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+`, "",{"version":3,"sources":["webpack://./src/styles/meyer.css"],"names":[],"mappings":"AAAA;;;CAGC;;AAED;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;EAiFE,SAAS;EACT,UAAU;EACV,SAAS;EACT,eAAe;EACf,aAAa;EACb,wBAAwB;AAC1B;AACA,gDAAgD;AAChD;;;;;;;;;;;EAWE,cAAc;AAChB;AACA;EACE,cAAc;AAChB;AACA;;EAEE,gBAAgB;AAClB;AACA;;EAEE,YAAY;AACd;AACA;;;;EAIE,WAAW;EACX,aAAa;AACf;AACA;EACE,yBAAyB;EACzB,iBAAiB;AACnB","sourcesContent":["/* http://meyerweb.com/eric/tools/css/reset/ \r\n   v2.0 | 20110126\r\n   License: none (public domain)\r\n*/\r\n\r\nhtml,\r\nbody,\r\ndiv,\r\nspan,\r\napplet,\r\nobject,\r\niframe,\r\nh1,\r\nh2,\r\nh3,\r\nh4,\r\nh5,\r\nh6,\r\np,\r\nblockquote,\r\npre,\r\na,\r\nabbr,\r\nacronym,\r\naddress,\r\nbig,\r\ncite,\r\ncode,\r\ndel,\r\ndfn,\r\nem,\r\nimg,\r\nins,\r\nkbd,\r\nq,\r\ns,\r\nsamp,\r\nsmall,\r\nstrike,\r\nstrong,\r\nsub,\r\nsup,\r\ntt,\r\nvar,\r\nb,\r\nu,\r\ni,\r\ncenter,\r\ndl,\r\ndt,\r\ndd,\r\nol,\r\nul,\r\nli,\r\nfieldset,\r\nform,\r\nlabel,\r\nlegend,\r\ntable,\r\ncaption,\r\ntbody,\r\ntfoot,\r\nthead,\r\ntr,\r\nth,\r\ntd,\r\narticle,\r\naside,\r\ncanvas,\r\ndetails,\r\nembed,\r\nfigure,\r\nfigcaption,\r\nfooter,\r\nheader,\r\nhgroup,\r\nmenu,\r\nnav,\r\noutput,\r\nruby,\r\nsection,\r\nsummary,\r\ntime,\r\nmark,\r\naudio,\r\nvideo {\r\n  margin: 0;\r\n  padding: 0;\r\n  border: 0;\r\n  font-size: 100%;\r\n  font: inherit;\r\n  vertical-align: baseline;\r\n}\r\n/* HTML5 display-role reset for older browsers */\r\narticle,\r\naside,\r\ndetails,\r\nfigcaption,\r\nfigure,\r\nfooter,\r\nheader,\r\nhgroup,\r\nmenu,\r\nnav,\r\nsection {\r\n  display: block;\r\n}\r\nbody {\r\n  line-height: 1;\r\n}\r\nol,\r\nul {\r\n  list-style: none;\r\n}\r\nblockquote,\r\nq {\r\n  quotes: none;\r\n}\r\nblockquote:before,\r\nblockquote:after,\r\nq:before,\r\nq:after {\r\n  content: \"\";\r\n  content: none;\r\n}\r\ntable {\r\n  border-collapse: collapse;\r\n  border-spacing: 0;\r\n}\r\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
 
 /***/ }),
 
@@ -50,11 +224,124 @@ ___CSS_LOADER_EXPORT___.push([module.id, `@font-face {
     url(${___CSS_LOADER_URL_REPLACEMENT_1___}) format("woff");
 }
 
-.content {
-  color: red;
-  font-family: "Montserrat";
+:root {
+  --background-color: #f1f5f9;
+  --primary-color: #ffa499;
+  --secondary-color: #ffe8e5;
+  --background-white: #ffffff;
+  --font-family: "Montserrat", sans-serif;
+  --h2-size: 32px;
+  --h3-size: 24px;
+  --h4-size: 16px;
+  --link-size: 20px;
+  --regular-weight: 400;
+  --medium-weight: 600;
+  --heavy-weight: 700;
+  --box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-`, "",{"version":3,"sources":["webpack://./src/styles/style.css"],"names":[],"mappings":"AAAA;EACE,yBAAyB;EACzB;0DACwD;AAC1D;;AAEA;EACE,UAAU;EACV,yBAAyB;AAC3B","sourcesContent":["@font-face {\r\n  font-family: \"Montserrat\";\r\n  src: url(\"../fonts/Montserrat-Regular.woff2\") format(\"woff2\"),\r\n    url(\"../fonts/Montserrat-Regular.woff\") format(\"woff\");\r\n}\r\n\r\n.content {\r\n  color: red;\r\n  font-family: \"Montserrat\";\r\n}\r\n"],"sourceRoot":""}]);
+
+body {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template: minmax(75px, auto) 1fr / minmax(200px, 1fr) 3fr;
+  background: var(--background-color);
+  font-family: var(--font-family);
+}
+
+.header {
+  grid-area: 1 / 1 / 2 / 3;
+  background-color: var(--primary-color);
+  padding: 10px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header h2 {
+  font-size: var(--h2-size);
+  color: var(--background-color);
+  font-weight: var(--heavy-weight);
+}
+
+.sidebar-nav {
+  background: var(--secondary-color);
+  grid-area: 2 / 1 / 3 / 2;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.splitter {
+  margin: 0;
+  border: 1px dashed var(--primary-color);
+}
+
+.project {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.input {
+  padding: 8px 14px;
+  background-color: var(--background-white);
+  outline: 0;
+  border: 0;
+  border-radius: 5px;
+  color: #000000;
+  box-shadow: var(--box-shadow);
+  font-family: var(--font-family);
+}
+
+.project-name {
+  color: #24292e;
+  outline: none;
+  flex: 5 5 auto;
+}
+
+.project-create {
+  cursor: pointer;
+  flex: 1 1 auto;
+}
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.project-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.project-item:hover {
+  background-color: var(--background-color);
+}
+
+.project-item p {
+  font-weight: bold;
+}
+
+.project-item button {
+  cursor: pointer;
+}
+
+.project-item button:hover {
+  background-color: var(--primary-color);
+}
+
+.content {
+  grid-area: 2 / 2 / 3 / 2;
+}
+`, "",{"version":3,"sources":["webpack://./src/styles/style.css"],"names":[],"mappings":"AAAA;EACE,yBAAyB;EACzB;0DACwD;AAC1D;;AAEA;EACE,2BAA2B;EAC3B,wBAAwB;EACxB,0BAA0B;EAC1B,2BAA2B;EAC3B,uCAAuC;EACvC,eAAe;EACf,eAAe;EACf,eAAe;EACf,iBAAiB;EACjB,qBAAqB;EACrB,oBAAoB;EACpB,mBAAmB;EACnB,mDAAmD;AACrD;;AAEA;EACE,aAAa;EACb,YAAY;EACZ,aAAa;EACb,8DAA8D;EAC9D,mCAAmC;EACnC,+BAA+B;AACjC;;AAEA;EACE,wBAAwB;EACxB,sCAAsC;EACtC,aAAa;AACf;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,SAAS;AACX;;AAEA;EACE,yBAAyB;EACzB,8BAA8B;EAC9B,gCAAgC;AAClC;;AAEA;EACE,kCAAkC;EAClC,wBAAwB;EACxB,aAAa;EACb,aAAa;EACb,sBAAsB;EACtB,SAAS;AACX;;AAEA;EACE,SAAS;EACT,uCAAuC;AACzC;;AAEA;EACE,aAAa;EACb,QAAQ;EACR,eAAe;AACjB;;AAEA;EACE,iBAAiB;EACjB,yCAAyC;EACzC,UAAU;EACV,SAAS;EACT,kBAAkB;EAClB,cAAc;EACd,6BAA6B;EAC7B,+BAA+B;AACjC;;AAEA;EACE,cAAc;EACd,aAAa;EACb,cAAc;AAChB;;AAEA;EACE,eAAe;EACf,cAAc;AAChB;;AAEA;EACE,aAAa;EACb,sBAAsB;EACtB,SAAS;AACX;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,8BAA8B;EAC9B,eAAe;AACjB;;AAEA;EACE,yCAAyC;AAC3C;;AAEA;EACE,iBAAiB;AACnB;;AAEA;EACE,eAAe;AACjB;;AAEA;EACE,sCAAsC;AACxC;;AAEA;EACE,wBAAwB;AAC1B","sourcesContent":["@font-face {\r\n  font-family: \"Montserrat\";\r\n  src: url(\"../fonts/Montserrat-Regular.woff2\") format(\"woff2\"),\r\n    url(\"../fonts/Montserrat-Regular.woff\") format(\"woff\");\r\n}\r\n\r\n:root {\r\n  --background-color: #f1f5f9;\r\n  --primary-color: #ffa499;\r\n  --secondary-color: #ffe8e5;\r\n  --background-white: #ffffff;\r\n  --font-family: \"Montserrat\", sans-serif;\r\n  --h2-size: 32px;\r\n  --h3-size: 24px;\r\n  --h4-size: 16px;\r\n  --link-size: 20px;\r\n  --regular-weight: 400;\r\n  --medium-weight: 600;\r\n  --heavy-weight: 700;\r\n  --box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;\r\n}\r\n\r\nbody {\r\n  height: 100vh;\r\n  width: 100vw;\r\n  display: grid;\r\n  grid-template: minmax(75px, auto) 1fr / minmax(200px, 1fr) 3fr;\r\n  background: var(--background-color);\r\n  font-family: var(--font-family);\r\n}\r\n\r\n.header {\r\n  grid-area: 1 / 1 / 2 / 3;\r\n  background-color: var(--primary-color);\r\n  padding: 10px;\r\n}\r\n\r\n.header {\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 10px;\r\n}\r\n\r\n.header h2 {\r\n  font-size: var(--h2-size);\r\n  color: var(--background-color);\r\n  font-weight: var(--heavy-weight);\r\n}\r\n\r\n.sidebar-nav {\r\n  background: var(--secondary-color);\r\n  grid-area: 2 / 1 / 3 / 2;\r\n  padding: 10px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 30px;\r\n}\r\n\r\n.splitter {\r\n  margin: 0;\r\n  border: 1px dashed var(--primary-color);\r\n}\r\n\r\n.project {\r\n  display: flex;\r\n  gap: 5px;\r\n  flex-wrap: wrap;\r\n}\r\n\r\n.input {\r\n  padding: 8px 14px;\r\n  background-color: var(--background-white);\r\n  outline: 0;\r\n  border: 0;\r\n  border-radius: 5px;\r\n  color: #000000;\r\n  box-shadow: var(--box-shadow);\r\n  font-family: var(--font-family);\r\n}\r\n\r\n.project-name {\r\n  color: #24292e;\r\n  outline: none;\r\n  flex: 5 5 auto;\r\n}\r\n\r\n.project-create {\r\n  cursor: pointer;\r\n  flex: 1 1 auto;\r\n}\r\n\r\n.project-list {\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 10px;\r\n}\r\n\r\n.project-item {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n  cursor: pointer;\r\n}\r\n\r\n.project-item:hover {\r\n  background-color: var(--background-color);\r\n}\r\n\r\n.project-item p {\r\n  font-weight: bold;\r\n}\r\n\r\n.project-item button {\r\n  cursor: pointer;\r\n}\r\n\r\n.project-item button:hover {\r\n  background-color: var(--primary-color);\r\n}\r\n\r\n.content {\r\n  grid-area: 2 / 2 / 3 / 2;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -212,6 +499,60 @@ module.exports = function (item) {
   }
   return [content].join("\n");
 };
+
+/***/ }),
+
+/***/ "./src/styles/meyer.css":
+/*!******************************!*\
+  !*** ./src/styles/meyer.css ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/insertBySelector.js */ "./node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "./node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_meyer_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!./meyer.css */ "./node_modules/css-loader/dist/cjs.js!./src/styles/meyer.css");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_meyer_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_meyer_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_meyer_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_meyer_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+
 
 /***/ }),
 
@@ -556,13 +897,13 @@ module.exports = __webpack_require__.p + "images/Montserrat-Regular.woff2";
 
 /***/ }),
 
-/***/ "./src/images/icon.png":
+/***/ "./src/images/logo.png":
 /*!*****************************!*\
-  !*** ./src/images/icon.png ***!
+  !*** ./src/images/logo.png ***!
   \*****************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "images/icon.png";
+module.exports = __webpack_require__.p + "images/logo.png";
 
 /***/ })
 
@@ -710,16 +1051,19 @@ var __webpack_exports__ = {};
   !*** ./src/index.js ***!
   \**********************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _styles_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/style.css */ "./src/styles/style.css");
-/* harmony import */ var _js_function__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/function */ "./src/js/function.js");
-/* harmony import */ var _images_icon_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./images/icon.png */ "./src/images/icon.png");
+/* harmony import */ var _styles_meyer_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/meyer.css */ "./src/styles/meyer.css");
+/* harmony import */ var _styles_style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/style.css */ "./src/styles/style.css");
+/* harmony import */ var _images_logo_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./images/logo.png */ "./src/images/logo.png");
+/* harmony import */ var _js_preventSubmit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js/preventSubmit */ "./src/js/preventSubmit.js");
+/* harmony import */ var _js_project__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/project */ "./src/js/project.js");
 
 
 
-var content = document.querySelector(".content");
-content.textContent = (0,_js_function__WEBPACK_IMPORTED_MODULE_1__.sayHi)();
+
+
+(0,_js_preventSubmit__WEBPACK_IMPORTED_MODULE_3__.preventSubmit)();
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle.cf31e5a35fb578573222.js.map
+//# sourceMappingURL=bundle.953e6527132b2828461c.js.map

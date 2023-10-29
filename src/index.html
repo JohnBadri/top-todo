@@ -6,7 +6,22 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
+    <div class="header">
+      <img class="logo-img" alt="tick" src="./images/logo.png" />
+      <h2>ToDo List</h2>
+    </div>
+    <nav class="sidebar-nav">
+      <form class="project">
+        <input
+          type="text"
+          class="input project-name"
+          placeholder="My Project Name"
+        />
+        <input type="submit" class="input project-create" value="✚" />
+      </form>
+      <hr class="splitter" />
+      <div class="project-list"></div>
+    </nav>
     <div class="content"></div>
-    <img src="./images/icon.png" />
   </body>
 </html>

@@ -4,7 +4,120 @@
     url("../fonts/Montserrat-Regular.woff") format("woff");
 }
 
+:root {
+  --background-color: #f1f5f9;
+  --primary-color: #ffa499;
+  --secondary-color: #ffe8e5;
+  --background-white: #ffffff;
+  --font-family: "Montserrat", sans-serif;
+  --h2-size: 32px;
+  --h3-size: 24px;
+  --h4-size: 16px;
+  --link-size: 20px;
+  --regular-weight: 400;
+  --medium-weight: 600;
+  --heavy-weight: 700;
+  --box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template: minmax(75px, auto) 1fr / minmax(200px, 1fr) 3fr;
+  background: var(--background-color);
+  font-family: var(--font-family);
+}
+
+.header {
+  grid-area: 1 / 1 / 2 / 3;
+  background-color: var(--primary-color);
+  padding: 10px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header h2 {
+  font-size: var(--h2-size);
+  color: var(--background-color);
+  font-weight: var(--heavy-weight);
+}
+
+.sidebar-nav {
+  background: var(--secondary-color);
+  grid-area: 2 / 1 / 3 / 2;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.splitter {
+  margin: 0;
+  border: 1px dashed var(--primary-color);
+}
+
+.project {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.input {
+  padding: 8px 14px;
+  background-color: var(--background-white);
+  outline: 0;
+  border: 0;
+  border-radius: 5px;
+  color: #000000;
+  box-shadow: var(--box-shadow);
+  font-family: var(--font-family);
+}
+
+.project-name {
+  color: #24292e;
+  outline: none;
+  flex: 5 5 auto;
+}
+
+.project-create {
+  cursor: pointer;
+  flex: 1 1 auto;
+}
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.project-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.project-item:hover {
+  background-color: var(--background-color);
+}
+
+.project-item p {
+  font-weight: bold;
+}
+
+.project-item button {
+  cursor: pointer;
+}
+
+.project-item button:hover {
+  background-color: var(--primary-color);
+}
+
 .content {
-  color: red;
-  font-family: "Montserrat";
+  grid-area: 2 / 2 / 3 / 2;
 }

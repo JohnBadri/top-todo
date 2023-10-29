@@ -1,6 +1,7 @@
+import "./styles/meyer.css";
 import "./styles/style.css";
-import { sayHi } from "./js/function";
-import icon from "./images/icon.png";
+import logo from "./images/logo.png";
+import { preventSubmit } from "./js/preventSubmit";
+import { createProject } from "./js/project";
 
-const content = document.querySelector(".content");
-content.textContent = sayHi();
+preventSubmit();
