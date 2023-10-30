@@ -1,7 +1,8 @@
 import "./styles/meyer.css";
 import "./styles/style.css";
 import logo from "./images/logo.png";
-import { preventSubmit } from "./js/preventSubmit";
-import { createProject } from "./js/project";
+import { preventFormSubmission } from "./js/preventFormSubmission";
+import { projectListRender } from "./js/projectFactory";
 
-preventSubmit();
+preventFormSubmission();
+projectListRender();
