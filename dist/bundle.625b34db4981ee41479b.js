@@ -2,37 +2,90 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/js/preventSubmit.js":
-/*!*********************************!*\
-  !*** ./src/js/preventSubmit.js ***!
-  \*********************************/
+/***/ "./src/js/preventFormSubmission.js":
+/*!*****************************************!*\
+  !*** ./src/js/preventFormSubmission.js ***!
+  \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   preventSubmit: () => (/* binding */ preventSubmit)
+/* harmony export */   preventFormSubmission: () => (/* binding */ preventFormSubmission)
 /* harmony export */ });
-var preventSubmit = function preventSubmit() {
+var preventFormSubmission = function preventFormSubmission() {
   var form = document.querySelector("form");
-  form.addEventListener("submit", function (submit) {
-    submit.preventDefault();
+  form.addEventListener("submit", function (submitEvent) {
+    submitEvent.preventDefault();
   });
 };
 
 /***/ }),
 
-/***/ "./src/js/project.js":
-/*!***************************!*\
-  !*** ./src/js/project.js ***!
-  \***************************/
+/***/ "./src/js/projectFactory.js":
+/*!**********************************!*\
+  !*** ./src/js/projectFactory.js ***!
+  \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   sayHi: () => (/* binding */ sayHi)
+/* harmony export */   projectListRender: () => (/* binding */ projectListRender)
 /* harmony export */ });
-var sayHi = function sayHi() {
-  return "Hi there.";
+var allProjects = [];
+var createProject = function createProject(projectName) {
+  var name = projectName;
+  var todo = [];
+  return {
+    name: name,
+    addList: function addList(listName) {
+      listName = listName.trim();
+      var listIndex = todo.findIndex(function (element) {
+        return element === listName;
+      });
+      if (listIndex === -1) {
+        todo.push(listName);
+      }
+    },
+    removeList: function removeList(listName) {
+      var listIndex = todo.findIndex(function (element) {
+        return element === listName;
+      });
+      if (listIndex !== -1) {
+        todo.splice(listIndex, 1);
+      }
+    }
+  };
+};
+var resetForm = function resetForm(inputElement, submitElement) {
+  inputElement.value = "";
+  submitElement.style.color = "#000";
+};
+var displayEmptyError = function displayEmptyError(inputElement, submitElement) {
+  inputElement.placeholder = "Please input a project name";
+  submitElement.style.color = "#ff0000";
+};
+var displayDuplicateError = function displayDuplicateError(projectArray, inputValue) {
+  var indexCheck = projectArray.find(function (element) {
+    return element.name === inputValue;
+  });
+  return indexCheck;
+};
+var addToProjectList = function addToProjectList() {};
+var projectListRender = function projectListRender() {
+  var projectFormInput = document.querySelector(".project-form-name");
+  var projectFormSubmit = document.querySelector(".project-form-submit");
+  projectFormSubmit.addEventListener("click", function () {
+    var projectName = projectFormInput.value.trim();
+    var checkIfProjectExists = displayDuplicateError(allProjects, projectName);
+    console.log(checkIfProjectExists);
+    if (projectName) {
+      var project = createProject(projectName);
+      resetForm(projectFormInput, projectFormSubmit);
+    } else {
+      displayEmptyError(projectFormInput, projectFormSubmit);
+    }
+    console.log(allProjects);
+  });
 };
 
 /***/ }),
@@ -249,25 +302,25 @@ body {
   font-family: var(--font-family);
 }
 
-.header {
+.header-container {
   grid-area: 1 / 1 / 2 / 3;
   background-color: var(--primary-color);
   padding: 10px;
 }
 
-.header {
+.header-container {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.header h2 {
+.header-title {
   font-size: var(--h2-size);
   color: var(--background-color);
   font-weight: var(--heavy-weight);
 }
 
-.sidebar-nav {
+.sidebar-navigation {
   background: var(--secondary-color);
   grid-area: 2 / 1 / 3 / 2;
   padding: 10px;
@@ -276,18 +329,19 @@ body {
   gap: 30px;
 }
 
-.splitter {
+.divider-line {
   margin: 0;
   border: 1px dashed var(--primary-color);
 }
 
-.project {
+.project-form {
   display: flex;
   gap: 5px;
   flex-wrap: wrap;
 }
 
-.input {
+.project-form-name,
+.project-form-submit {
   padding: 8px 14px;
   background-color: var(--background-white);
   outline: 0;
@@ -298,18 +352,18 @@ body {
   font-family: var(--font-family);
 }
 
-.project-name {
+.project-form-name {
   color: #24292e;
   outline: none;
   flex: 5 5 auto;
 }
 
-.project-create {
+.project-form-submit {
   cursor: pointer;
   flex: 1 1 auto;
 }
 
-.project-list {
+.project-list-container {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -338,10 +392,10 @@ body {
   background-color: var(--primary-color);
 }
 
-.content {
+.main-content {
   grid-area: 2 / 2 / 3 / 2;
 }
-`, "",{"version":3,"sources":["webpack://./src/styles/style.css"],"names":[],"mappings":"AAAA;EACE,yBAAyB;EACzB;0DACwD;AAC1D;;AAEA;EACE,2BAA2B;EAC3B,wBAAwB;EACxB,0BAA0B;EAC1B,2BAA2B;EAC3B,uCAAuC;EACvC,eAAe;EACf,eAAe;EACf,eAAe;EACf,iBAAiB;EACjB,qBAAqB;EACrB,oBAAoB;EACpB,mBAAmB;EACnB,mDAAmD;AACrD;;AAEA;EACE,aAAa;EACb,YAAY;EACZ,aAAa;EACb,8DAA8D;EAC9D,mCAAmC;EACnC,+BAA+B;AACjC;;AAEA;EACE,wBAAwB;EACxB,sCAAsC;EACtC,aAAa;AACf;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,SAAS;AACX;;AAEA;EACE,yBAAyB;EACzB,8BAA8B;EAC9B,gCAAgC;AAClC;;AAEA;EACE,kCAAkC;EAClC,wBAAwB;EACxB,aAAa;EACb,aAAa;EACb,sBAAsB;EACtB,SAAS;AACX;;AAEA;EACE,SAAS;EACT,uCAAuC;AACzC;;AAEA;EACE,aAAa;EACb,QAAQ;EACR,eAAe;AACjB;;AAEA;EACE,iBAAiB;EACjB,yCAAyC;EACzC,UAAU;EACV,SAAS;EACT,kBAAkB;EAClB,cAAc;EACd,6BAA6B;EAC7B,+BAA+B;AACjC;;AAEA;EACE,cAAc;EACd,aAAa;EACb,cAAc;AAChB;;AAEA;EACE,eAAe;EACf,cAAc;AAChB;;AAEA;EACE,aAAa;EACb,sBAAsB;EACtB,SAAS;AACX;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,8BAA8B;EAC9B,eAAe;AACjB;;AAEA;EACE,yCAAyC;AAC3C;;AAEA;EACE,iBAAiB;AACnB;;AAEA;EACE,eAAe;AACjB;;AAEA;EACE,sCAAsC;AACxC;;AAEA;EACE,wBAAwB;AAC1B","sourcesContent":["@font-face {\r\n  font-family: \"Montserrat\";\r\n  src: url(\"../fonts/Montserrat-Regular.woff2\") format(\"woff2\"),\r\n    url(\"../fonts/Montserrat-Regular.woff\") format(\"woff\");\r\n}\r\n\r\n:root {\r\n  --background-color: #f1f5f9;\r\n  --primary-color: #ffa499;\r\n  --secondary-color: #ffe8e5;\r\n  --background-white: #ffffff;\r\n  --font-family: \"Montserrat\", sans-serif;\r\n  --h2-size: 32px;\r\n  --h3-size: 24px;\r\n  --h4-size: 16px;\r\n  --link-size: 20px;\r\n  --regular-weight: 400;\r\n  --medium-weight: 600;\r\n  --heavy-weight: 700;\r\n  --box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;\r\n}\r\n\r\nbody {\r\n  height: 100vh;\r\n  width: 100vw;\r\n  display: grid;\r\n  grid-template: minmax(75px, auto) 1fr / minmax(200px, 1fr) 3fr;\r\n  background: var(--background-color);\r\n  font-family: var(--font-family);\r\n}\r\n\r\n.header {\r\n  grid-area: 1 / 1 / 2 / 3;\r\n  background-color: var(--primary-color);\r\n  padding: 10px;\r\n}\r\n\r\n.header {\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 10px;\r\n}\r\n\r\n.header h2 {\r\n  font-size: var(--h2-size);\r\n  color: var(--background-color);\r\n  font-weight: var(--heavy-weight);\r\n}\r\n\r\n.sidebar-nav {\r\n  background: var(--secondary-color);\r\n  grid-area: 2 / 1 / 3 / 2;\r\n  padding: 10px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 30px;\r\n}\r\n\r\n.splitter {\r\n  margin: 0;\r\n  border: 1px dashed var(--primary-color);\r\n}\r\n\r\n.project {\r\n  display: flex;\r\n  gap: 5px;\r\n  flex-wrap: wrap;\r\n}\r\n\r\n.input {\r\n  padding: 8px 14px;\r\n  background-color: var(--background-white);\r\n  outline: 0;\r\n  border: 0;\r\n  border-radius: 5px;\r\n  color: #000000;\r\n  box-shadow: var(--box-shadow);\r\n  font-family: var(--font-family);\r\n}\r\n\r\n.project-name {\r\n  color: #24292e;\r\n  outline: none;\r\n  flex: 5 5 auto;\r\n}\r\n\r\n.project-create {\r\n  cursor: pointer;\r\n  flex: 1 1 auto;\r\n}\r\n\r\n.project-list {\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 10px;\r\n}\r\n\r\n.project-item {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n  cursor: pointer;\r\n}\r\n\r\n.project-item:hover {\r\n  background-color: var(--background-color);\r\n}\r\n\r\n.project-item p {\r\n  font-weight: bold;\r\n}\r\n\r\n.project-item button {\r\n  cursor: pointer;\r\n}\r\n\r\n.project-item button:hover {\r\n  background-color: var(--primary-color);\r\n}\r\n\r\n.content {\r\n  grid-area: 2 / 2 / 3 / 2;\r\n}\r\n"],"sourceRoot":""}]);
+`, "",{"version":3,"sources":["webpack://./src/styles/style.css"],"names":[],"mappings":"AAAA;EACE,yBAAyB;EACzB;0DACwD;AAC1D;;AAEA;EACE,2BAA2B;EAC3B,wBAAwB;EACxB,0BAA0B;EAC1B,2BAA2B;EAC3B,uCAAuC;EACvC,eAAe;EACf,eAAe;EACf,eAAe;EACf,iBAAiB;EACjB,qBAAqB;EACrB,oBAAoB;EACpB,mBAAmB;EACnB,mDAAmD;AACrD;;AAEA;EACE,aAAa;EACb,YAAY;EACZ,aAAa;EACb,8DAA8D;EAC9D,mCAAmC;EACnC,+BAA+B;AACjC;;AAEA;EACE,wBAAwB;EACxB,sCAAsC;EACtC,aAAa;AACf;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,SAAS;AACX;;AAEA;EACE,yBAAyB;EACzB,8BAA8B;EAC9B,gCAAgC;AAClC;;AAEA;EACE,kCAAkC;EAClC,wBAAwB;EACxB,aAAa;EACb,aAAa;EACb,sBAAsB;EACtB,SAAS;AACX;;AAEA;EACE,SAAS;EACT,uCAAuC;AACzC;;AAEA;EACE,aAAa;EACb,QAAQ;EACR,eAAe;AACjB;;AAEA;;EAEE,iBAAiB;EACjB,yCAAyC;EACzC,UAAU;EACV,SAAS;EACT,kBAAkB;EAClB,cAAc;EACd,6BAA6B;EAC7B,+BAA+B;AACjC;;AAEA;EACE,cAAc;EACd,aAAa;EACb,cAAc;AAChB;;AAEA;EACE,eAAe;EACf,cAAc;AAChB;;AAEA;EACE,aAAa;EACb,sBAAsB;EACtB,SAAS;AACX;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,8BAA8B;EAC9B,eAAe;AACjB;;AAEA;EACE,yCAAyC;AAC3C;;AAEA;EACE,iBAAiB;AACnB;;AAEA;EACE,eAAe;AACjB;;AAEA;EACE,sCAAsC;AACxC;;AAEA;EACE,wBAAwB;AAC1B","sourcesContent":["@font-face {\r\n  font-family: \"Montserrat\";\r\n  src: url(\"../fonts/Montserrat-Regular.woff2\") format(\"woff2\"),\r\n    url(\"../fonts/Montserrat-Regular.woff\") format(\"woff\");\r\n}\r\n\r\n:root {\r\n  --background-color: #f1f5f9;\r\n  --primary-color: #ffa499;\r\n  --secondary-color: #ffe8e5;\r\n  --background-white: #ffffff;\r\n  --font-family: \"Montserrat\", sans-serif;\r\n  --h2-size: 32px;\r\n  --h3-size: 24px;\r\n  --h4-size: 16px;\r\n  --link-size: 20px;\r\n  --regular-weight: 400;\r\n  --medium-weight: 600;\r\n  --heavy-weight: 700;\r\n  --box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;\r\n}\r\n\r\nbody {\r\n  height: 100vh;\r\n  width: 100vw;\r\n  display: grid;\r\n  grid-template: minmax(75px, auto) 1fr / minmax(200px, 1fr) 3fr;\r\n  background: var(--background-color);\r\n  font-family: var(--font-family);\r\n}\r\n\r\n.header-container {\r\n  grid-area: 1 / 1 / 2 / 3;\r\n  background-color: var(--primary-color);\r\n  padding: 10px;\r\n}\r\n\r\n.header-container {\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 10px;\r\n}\r\n\r\n.header-title {\r\n  font-size: var(--h2-size);\r\n  color: var(--background-color);\r\n  font-weight: var(--heavy-weight);\r\n}\r\n\r\n.sidebar-navigation {\r\n  background: var(--secondary-color);\r\n  grid-area: 2 / 1 / 3 / 2;\r\n  padding: 10px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 30px;\r\n}\r\n\r\n.divider-line {\r\n  margin: 0;\r\n  border: 1px dashed var(--primary-color);\r\n}\r\n\r\n.project-form {\r\n  display: flex;\r\n  gap: 5px;\r\n  flex-wrap: wrap;\r\n}\r\n\r\n.project-form-name,\r\n.project-form-submit {\r\n  padding: 8px 14px;\r\n  background-color: var(--background-white);\r\n  outline: 0;\r\n  border: 0;\r\n  border-radius: 5px;\r\n  color: #000000;\r\n  box-shadow: var(--box-shadow);\r\n  font-family: var(--font-family);\r\n}\r\n\r\n.project-form-name {\r\n  color: #24292e;\r\n  outline: none;\r\n  flex: 5 5 auto;\r\n}\r\n\r\n.project-form-submit {\r\n  cursor: pointer;\r\n  flex: 1 1 auto;\r\n}\r\n\r\n.project-list-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 10px;\r\n}\r\n\r\n.project-item {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n  cursor: pointer;\r\n}\r\n\r\n.project-item:hover {\r\n  background-color: var(--background-color);\r\n}\r\n\r\n.project-item p {\r\n  font-weight: bold;\r\n}\r\n\r\n.project-item button {\r\n  cursor: pointer;\r\n}\r\n\r\n.project-item button:hover {\r\n  background-color: var(--primary-color);\r\n}\r\n\r\n.main-content {\r\n  grid-area: 2 / 2 / 3 / 2;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1054,16 +1108,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_meyer_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/meyer.css */ "./src/styles/meyer.css");
 /* harmony import */ var _styles_style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/style.css */ "./src/styles/style.css");
 /* harmony import */ var _images_logo_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./images/logo.png */ "./src/images/logo.png");
-/* harmony import */ var _js_preventSubmit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js/preventSubmit */ "./src/js/preventSubmit.js");
-/* harmony import */ var _js_project__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/project */ "./src/js/project.js");
+/* harmony import */ var _js_preventFormSubmission__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js/preventFormSubmission */ "./src/js/preventFormSubmission.js");
+/* harmony import */ var _js_projectFactory__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/projectFactory */ "./src/js/projectFactory.js");
 
 
 
 
 
-(0,_js_preventSubmit__WEBPACK_IMPORTED_MODULE_3__.preventSubmit)();
+(0,_js_preventFormSubmission__WEBPACK_IMPORTED_MODULE_3__.preventFormSubmission)();
+(0,_js_projectFactory__WEBPACK_IMPORTED_MODULE_4__.projectListRender)();
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle.953e6527132b2828461c.js.map
+//# sourceMappingURL=bundle.625b34db4981ee41479b.js.map
