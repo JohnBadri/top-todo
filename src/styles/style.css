@@ -179,3 +179,9 @@ body {
 .active {
   background-color: #e5ffe8;
 }
+
+.project-warning {
+  color: #ff0000;
+  font-weight: bold;
+  display: none;
+}

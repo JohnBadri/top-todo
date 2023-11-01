@@ -77,7 +77,7 @@ const createElement = (projectName) => {
   addDeleteButton.classList.add("project-delete-btn");
   projectItem.appendChild(addDeleteButton);
 
-  addDeleteButton.addEventListener("click", function (event) {
+  addDeleteButton.addEventListener("click", function () {
     const parentProject = addDeleteButton.closest("div");
     const siblingName = addDeleteButton.previousElementSibling;
 
@@ -132,13 +132,16 @@ const createToDo = (listTitle, listDescription, listDate, listPriority) => {
     const parentProject = addDeleteButton.closest("div");
     const siblingName = addDeleteButton.previousElementSibling;
 
-    const findProject = allProjects.find(
+    const findProjectIndex = allProjects.findIndex(
       (element) => element.name === siblingName.textContent
     );
 
-    const findProjectIndex = allProjects.indexOf(siblingName.textContent);
-    allProjects.splice(findProjectIndex, 1);
-    parentProject.remove();
+    console.log(findProjectIndex);
+
+    if (findProjectIndex !== -1) {
+      allProjects.splice(findProjectIndex, 1);
+      parentProject.remove();
+    }
   });
 };
 
@@ -167,17 +170,47 @@ export const projectListRender = () => {
   });
 
   toDoFormSubmit.addEventListener("click", () => {
+    const warning = document.querySelector(".project-warning");
     const toDoText = document.querySelector(".todo-list-text").value.trim();
     const toDoDesc = document.querySelector(".todo-list-desc").value.trim();
     const toDoDate = document.querySelector(".todo-list-date").value;
     const toDoPriority = document.querySelector(".todo-list-option").value;
     const activeElement = document.querySelector(".active");
     const activeProjectdiv = activeElement
-      ? activeElement.querySelector("p")
+      ? activeElement.querySelector("p").textContent
       : null;
 
-    if (toDoDate && toDoDesc && toDoDate && toDoPriority) {
-      createToDo(toDoText, toDoDesc, toDoDate, toDoPriority);
+    const findProjectIndex = allProjects.findIndex(
+      (element) => element.name === activeProjectdiv
+    );
+
+    console.log(findProjectIndex, activeProjectdiv);
+
+    if (
+      toDoDate &&
+      toDoDesc &&
+      toDoDate &&
+      toDoPriority &&
+      activeProjectdiv !== null
+    ) {
+      if (findProjectIndex !== -1) {
+        allProjects[findProjectIndex].addToDo(
+          toDoText,
+          toDoDesc,
+          toDoDate,
+          toDoPriority
+        );
+        createToDo(toDoText, toDoDesc, toDoDate, toDoPriority);
+        warning.style.display = "none";
+      }
+    } else if (
+      toDoDate &&
+      toDoDesc &&
+      toDoDate &&
+      toDoPriority &&
+      activeProjectdiv === null
+    ) {
+      warning.style.display = "block";
     }
   });
 };
