@@ -48,17 +48,23 @@ const displayDuplicateError = (projectArray, projectName) => {
 };
 
 const showToDo = (projectItem) => {
-  const allProjectItems = document.querySelectorAll(".project-item");
+  // Remove existing to-dos from the list
   const allToDo = document.querySelectorAll(".list-item");
-  allProjectItems.forEach((item) => {
-    item.classList.remove("active");
-  });
-
   allToDo.forEach((item) => {
     item.remove();
   });
 
-  projectItem.classList.add("active");
+  const projectName = projectItem.querySelector("p").textContent;
+
+  const projectObj = allProjects.find(
+    (project) => project.name === projectName
+  );
+
+  if (projectObj && projectObj.todo.length > 0) {
+    projectObj.todo.forEach((task) => {
+      createToDo(task.title, task.description, task.dueDate, task.priority);
+    });
+  }
 };
 
 // render the project list item including deleting it
@@ -77,7 +83,8 @@ const createElement = (projectName) => {
   addDeleteButton.classList.add("project-delete-btn");
   projectItem.appendChild(addDeleteButton);
 
-  addDeleteButton.addEventListener("click", function () {
+  addDeleteButton.addEventListener("click", function (event) {
+    event.stopPropagation();
     const parentProject = addDeleteButton.closest("div");
     const siblingName = addDeleteButton.previousElementSibling;
 
@@ -85,9 +92,19 @@ const createElement = (projectName) => {
       (element) => element.name === siblingName.textContent
     );
 
+    const wasActive = parentProject.classList.contains("active");
+
     if (findProjectIndex !== -1) {
       allProjects.splice(findProjectIndex, 1);
       parentProject.remove();
+    }
+
+    if (wasActive && allProjects.length > 0) {
+      const firstProjectElement = document.querySelector(".project-item");
+      if (firstProjectElement) {
+        firstProjectElement.classList.add("active");
+        showToDo(firstProjectElement);
+      }
     }
   });
 
@@ -97,6 +114,7 @@ const createElement = (projectName) => {
       item.classList.remove("active");
     });
     projectItem.classList.add("active");
+    showToDo(projectItem);
   });
 };
 
@@ -129,19 +147,24 @@ const createToDo = (listTitle, listDescription, listDate, listPriority) => {
   listItem.appendChild(addDeleteButton);
 
   addDeleteButton.addEventListener("click", function () {
-    const parentProject = addDeleteButton.closest("div");
-    const siblingName = addDeleteButton.previousElementSibling;
+    const activeElement = document.querySelector(".active");
+    if (activeElement) {
+      const activeProjectName = activeElement.querySelector("p").textContent;
+      const project = allProjects.find(
+        (proj) => proj.name === activeProjectName
+      );
 
-    const findProjectIndex = allProjects.findIndex(
-      (element) => element.name === siblingName.textContent
-    );
-
-    console.log(findProjectIndex);
-
-    if (findProjectIndex !== -1) {
-      allProjects.splice(findProjectIndex, 1);
-      parentProject.remove();
+      if (project) {
+        const taskIndex = project.todo.findIndex(
+          (task) => task.title === listTitle
+        );
+        if (taskIndex !== -1) {
+          project.todo.splice(taskIndex, 1);
+        }
+      }
     }
+
+    listItem.remove();
   });
 };
 
@@ -166,7 +189,6 @@ export const projectListRender = () => {
     } else {
       displayEmptyError(projectName, projectFormInput, projectFormSubmit);
     }
-    console.log(allProjects);
   });
 
   toDoFormSubmit.addEventListener("click", () => {
@@ -183,8 +205,6 @@ export const projectListRender = () => {
     const findProjectIndex = allProjects.findIndex(
       (element) => element.name === activeProjectdiv
     );
-
-    console.log(findProjectIndex, activeProjectdiv);
 
     if (
       toDoDate &&
