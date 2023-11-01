@@ -2,24 +2,22 @@
 const allProjects = [];
 
 // factory function to create projects
-const createProject = (projectName) => {
+const createProject = (projectName, title, description, dueDate, priority) => {
   const name = projectName;
   let todo = [];
+  const addToDo = (title, description, dueDate, priority) => {
+    const task = {
+      title: title,
+      description: description,
+      dueDate: dueDate,
+      priority: priority,
+    };
+    todo.push(task);
+  };
   return {
     name,
-    addList(listName) {
-      listName = listName.trim();
-      const listIndex = todo.findIndex((element) => element === listName);
-      if (listIndex === -1) {
-        todo.push(listName);
-      }
-    },
-    removeList(listName) {
-      const listIndex = todo.findIndex((element) => element === listName);
-      if (listIndex !== -1) {
-        todo.splice(listIndex, 1);
-      }
-    },
+    todo,
+    addToDo,
   };
 };
 
@@ -49,6 +47,20 @@ const displayDuplicateError = (projectArray, projectName) => {
   return indexCheck;
 };
 
+const showToDo = (projectItem) => {
+  const allProjectItems = document.querySelectorAll(".project-item");
+  const allToDo = document.querySelectorAll(".list-item");
+  allProjectItems.forEach((item) => {
+    item.classList.remove("active");
+  });
+
+  allToDo.forEach((item) => {
+    item.remove();
+  });
+
+  projectItem.classList.add("active");
+};
+
 // render the project list item including deleting it
 const createElement = (projectName) => {
   const listOfProjects = document.querySelector(".project-list-container");
@@ -62,8 +74,59 @@ const createElement = (projectName) => {
 
   const addDeleteButton = document.createElement("button");
   addDeleteButton.textContent = "✘";
-  addDeleteButton.classList.add("input");
+  addDeleteButton.classList.add("project-delete-btn");
   projectItem.appendChild(addDeleteButton);
+
+  addDeleteButton.addEventListener("click", function (event) {
+    const parentProject = addDeleteButton.closest("div");
+    const siblingName = addDeleteButton.previousElementSibling;
+
+    const findProjectIndex = allProjects.findIndex(
+      (element) => element.name === siblingName.textContent
+    );
+
+    if (findProjectIndex !== -1) {
+      allProjects.splice(findProjectIndex, 1);
+      parentProject.remove();
+    }
+  });
+
+  projectItem.addEventListener("click", () => {
+    const allProjectItems = document.querySelectorAll(".project-item");
+    allProjectItems.forEach((item) => {
+      item.classList.remove("active");
+    });
+    projectItem.classList.add("active");
+  });
+};
+
+// render the project list item including deleting it
+const createToDo = (listTitle, listDescription, listDate, listPriority) => {
+  const listOfToDo = document.querySelector(".list-item-container");
+  const listItem = document.createElement("div");
+  listItem.classList.add("project-todo", "list-item");
+  listOfToDo.appendChild(listItem);
+
+  const addListTitle = document.createElement("p");
+  addListTitle.textContent = listTitle;
+  listItem.appendChild(addListTitle);
+
+  const addListDescription = document.createElement("p");
+  addListDescription.textContent = listDescription;
+  listItem.appendChild(addListDescription);
+
+  const addListDate = document.createElement("p");
+  addListDate.textContent = listDate;
+  listItem.appendChild(addListDate);
+
+  const addListPriority = document.createElement("p");
+  addListPriority.textContent = listPriority;
+  listItem.appendChild(addListPriority);
+
+  const addDeleteButton = document.createElement("button");
+  addDeleteButton.textContent = "✘";
+  addDeleteButton.classList.add("list-delete-btn");
+  listItem.appendChild(addDeleteButton);
 
   addDeleteButton.addEventListener("click", function () {
     const parentProject = addDeleteButton.closest("div");
@@ -72,6 +135,7 @@ const createElement = (projectName) => {
     const findProject = allProjects.find(
       (element) => element.name === siblingName.textContent
     );
+
     const findProjectIndex = allProjects.indexOf(siblingName.textContent);
     allProjects.splice(findProjectIndex, 1);
     parentProject.remove();
@@ -82,6 +146,7 @@ const createElement = (projectName) => {
 export const projectListRender = () => {
   const projectFormInput = document.querySelector(".project-form-name");
   const projectFormSubmit = document.querySelector(".project-form-submit");
+  const toDoFormSubmit = document.querySelector(".project-todo-add");
 
   projectFormSubmit.addEventListener("click", () => {
     const projectName = projectFormInput.value.trim();
@@ -99,5 +164,20 @@ export const projectListRender = () => {
       displayEmptyError(projectName, projectFormInput, projectFormSubmit);
     }
     console.log(allProjects);
+  });
+
+  toDoFormSubmit.addEventListener("click", () => {
+    const toDoText = document.querySelector(".todo-list-text").value.trim();
+    const toDoDesc = document.querySelector(".todo-list-desc").value.trim();
+    const toDoDate = document.querySelector(".todo-list-date").value;
+    const toDoPriority = document.querySelector(".todo-list-option").value;
+    const activeElement = document.querySelector(".active");
+    const activeProjectdiv = activeElement
+      ? activeElement.querySelector("p")
+      : null;
+
+    if (toDoDate && toDoDesc && toDoDate && toDoPriority) {
+      createToDo(toDoText, toDoDesc, toDoDate, toDoPriority);
+    }
   });
 };

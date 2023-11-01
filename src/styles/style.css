@@ -69,8 +69,16 @@ body {
 
 .project-form-name,
 .project-form-submit,
+.project-todo-add,
 .project-item,
-.input {
+.project-delete-btn,
+.list-delete-btn,
+.project-todo,
+.todo-list-text,
+.todo-list-desc,
+.todo-list-date,
+.todo-list-option,
+.add-list-item {
   padding: 8px 14px;
   background-color: var(--background-white);
   outline: 0;
@@ -113,14 +121,61 @@ body {
   font-weight: bold;
 }
 
-.project-item button {
+.project-item button,
+.project-delete-btn,
+.project-todo-add,
+.list-delete-btn {
   cursor: pointer;
 }
 
-.project-item button:hover {
+.project-item button:hover,
+.project-delete-btn:hover,
+.project-todo-add:hover,
+.list-delete-btn:hover {
   background-color: var(--primary-color);
 }
 
 .main-content {
   grid-area: 2 / 2 / 3 / 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+}
+
+.main-content h2 {
+  font-size: var(--h2-size);
+  font-weight: var(--heavy-weight);
+}
+
+.project-todo {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr 1fr 1fr;
+  width: 90%;
+  align-items: center;
+  gap: 20px;
+}
+
+.add-list-item {
+  display: grid;
+  grid-template-columns: 1fr 4fr 2fr 1fr 1fr;
+  width: 90%;
+  align-items: center;
+  gap: 20px;
+}
+
+.list-item-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.column-headings {
+  font-weight: var(--heavy-weight);
+}
+
+.active {
+  background-color: #e5ffe8;
 }

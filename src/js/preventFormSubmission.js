@@ -1,7 +1,12 @@
 export const preventFormSubmission = () => {
-  const form = document.querySelector("form");
+  const project = document.querySelector(".project-form");
+  const list = document.querySelector(".add-list-item");
 
-  form.addEventListener("submit", (submitEvent) => {
+  project.addEventListener("submit", (submitEvent) => {
+    submitEvent.preventDefault();
+  });
+
+  list.addEventListener("submit", (submitEvent) => {
     submitEvent.preventDefault();
   });
 };

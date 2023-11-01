@@ -22,6 +22,43 @@
       <hr class="divider-line" />
       <div class="project-list-container"></div>
     </nav>
-    <div class="main-content"></div>
+    <div class="main-content">
+      <h2>To Do List</h2>
+      <div class="column-headings project-todo">
+        <p>Title</p>
+        <p>Description</p>
+        <p>DueDate</p>
+        <p>Priority</p>
+        <p>Delete Buton</p>
+      </div>
+      <div class="list-item-container"></div>
+      <form class="add-list-item">
+        <input
+          type="text"
+          class="todo-list-text"
+          required
+          placeholder="Title"
+        />
+        <input
+          type="text"
+          class="todo-list-desc"
+          required
+          placeholder="Description"
+        />
+        <input
+          type="date"
+          class="todo-list-date"
+          required
+          title="Choose a date"
+        />
+        <select class="todo-list-option" required title="Choose a priority">
+          <option value="" disabled selected>Priority</option>
+          <option value="Low" title="Low">Low</option>
+          <option value="Medium" title="Medium">Medium</option>
+          <option value="High" title="High">High</option>
+        </select>
+        <input type="submit" class="project-todo-add" value="✚" />
+      </form>
+    </div>
   </body>
 </html>
