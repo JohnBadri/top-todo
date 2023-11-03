@@ -1,38 +1,21 @@
-# Webpack 5 Boilerplate
+# To-Do List Application
 
-## What's Included
+This To-Do List application is a project as part of The Odin Project's JavaScript curriculum. It is designed to help users manage tasks with an interface for creating, organizing, and deleting tasks and projects.
 
-- **Babel**: ES6+ support
-- **CSS Loader**: Import CSS files
-- **HTML Webpack Plugin**: Auto-generate HTML
-- **Dev Server**: Live reloading
-- **Asset Management**: Handle images and fonts
-  - Images: png, svg, jpg, jpeg, gif
-  - Fonts: woff, woff2, eot, ttf, otf
-- **Source Maps**: Debugging support
-- **Hot Module Replacement**: Automatic browser refresh
+## Features
 
-## Commands
+- **Project Management:** Users can create projects to categorize their tasks.
+- **Task Management:** Users can add tasks to their projects with titles, descriptions, due dates, and priorities.
+- **Interactive UI:** The application allows for interactive management of projects and tasks, including the ability to mark tasks as done or delete them entirely.
 
-### Install Dependencies
+## Project Structure
 
-npm install
+The project includes the following main components:
 
-### Run Dev Server
+- **Project Factory Function:** Creates projects with associated tasks.
+- **DOM Manipulation:** Dynamically updates the content on the page as users interact with the application.
+- **Local Storage (Future Enhancement):** Intended to save user's tasks and projects (to be implemented).
 
-npm run dev
+## Contribution
 
-### Build
-
-npm run build
-
-## Configuration File Overview
-
-Your \`webpack.config.js\` includes:
-
-- **Mode**: Development
-- **Entry Point**: \`src/index.js\`
-- **Output**: Bundles in \`dist\` directory
-- **Dev Server**: Runs on \`localhost:3000\`
-- **Loaders**: CSS, Babel, Images, Fonts
-- **Plugins**: HTML Webpack Plugin
+Feel free to contribute to the project by suggesting new features or improvements. You could propose enhancements like email syntax verification or more complex password requirements.
