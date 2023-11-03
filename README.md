@@ -18,4 +18,4 @@ The project includes the following main components:
 
 ## Contribution
 
-Feel free to contribute to the project by suggesting new features or improvements. You could propose enhancements like email syntax verification or more complex password requirements.
+Feel free to contribute to the project by suggesting new features or improvements.
